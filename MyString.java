@@ -20,8 +20,12 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        int count = 0;
+        for(int i =0; i < str.length(); i++){
+            if(str.charAt(i)==ch)
+                count++;
+        }
+        return count;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -36,8 +40,19 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
-        return false;
+        boolean flag = false;
+        for(int i =0; i < str1.length(); i++){
+            for(int j =0; j < str2.length(); j++){
+                if(str1.charAt(i)==str2.charAt(j)) {
+                    flag = true;
+                    break;
+                }
+                else {
+                    flag = false;
+                }
+            }
+        }
+        return flag;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -49,23 +64,38 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        String strRes = "" ;
+        for(int i =0; i < str.length(); i++){
+
+            if(i==str.length()-1)
+                strRes += str.charAt(i);
+            else
+                strRes += str.charAt(i) + " ";
+
+        }
+        return strRes;
     }
-  
+
     /**
-     * Returns a string of n lowercase letters, selected randomly from 
+     * Returns a string of n lowercase letters, selected randomly from
      * the English alphabet 'a', 'b', 'c', ..., 'z'. Note that the same
      * letter can be selected more than once.
-     * 
+     *
      * Example: randomStringOfLetters(3) can return "zoo"
-     * 
+     *
      * @param n - the number of letter to select
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+        char[] smallCaps = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+        int j = 0;
+        String str = "";
+        for(int i = 0; i < n; i++){
+            j = (int) (Math.random() * 26) + 1;
+            str+=smallCaps[j];
+        }
+        return str;
     }
 
     /**
@@ -78,9 +108,40 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+       char[] arr1 = StrToArr(str1);
+        char[] arr2 = StrToArr(str2);
+        for(int i = 0; i < str1.length(); i++){
+            for(int j = 0; j < str2.length(); j++){
+                if(arr1[i]==arr2[j] && arr1[i]!=0 && arr2[j]!=0){
+                    arr1[i] = 0;
+                    arr2[j] = 0;
+                    break;
+                }
+            }
+        }
+
+        return ArrToStr(arr1);
     }
+
+    public static char[] StrToArr(String str) { // Asist fun
+        char[] arr = new char[str.length()];
+        String strRes = "";
+        for(int i = 0; i < arr.length; i++){
+            arr[i]=str.charAt(i);
+        }
+        return arr;
+    }
+
+    public static String ArrToStr(char[] arr) {// Asist fun
+        String str = "";
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i]!=0)
+                str += arr[i];
+        }
+        return str;
+    }
+
+
 
     /**
      * Returns a string consisting of the given string, with the given 
