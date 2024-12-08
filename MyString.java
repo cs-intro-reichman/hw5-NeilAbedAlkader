@@ -12,7 +12,7 @@ public class MyString {
     }
 
     /**
-     * Returns the number of times the given character appears in the given string.
+     * Returns the number of times the given character appears in the given string.vvvv
      * Example: countChar("Center",'e') returns 2 and countChar("Center",'c') returns 0. 
      * 
      * @param str - a string
