@@ -9,6 +9,7 @@ public class MyString {
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
         //// Put your other tests here.
+        System.out.println(randomStringOfLetters(8));
     }
 
     /**
@@ -41,10 +42,18 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
         boolean flag = false;
-        for(int i =0; i < str1.length(); i++){
-            for(int j =0; j < str2.length(); j++){
-                if(str1.charAt(i)==str2.charAt(j)) {
+        char[] arr1 = StrToArr(str1);
+        char[] arr2 = StrToArr(str2);
+
+        if(str1.isEmpty())
+            return true;
+
+        for(int i =0; i < arr1.length; i++){
+            for(int j =0; j < arr2.length; j++){
+                if(arr1[i]==arr2[j] && arr1[i]!=0 && arr2[j]!=0) {
                     flag = true;
+                    arr1[i]=0;
+                    arr2[i]=0;
                     break;
                 }
                 else {
@@ -92,7 +101,7 @@ public class MyString {
         int j = 0;
         String str = "";
         for(int i = 0; i < n; i++){
-            j = (int) (Math.random() * 26) + 1;
+            j = (int) (Math.random() * 26) ;
             str+=smallCaps[j];
         }
         return str;
