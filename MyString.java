@@ -53,7 +53,7 @@ public class MyString {
                 if(arr1[i]==arr2[j] && arr1[i]!=0 && arr2[j]!=0) {
                     flag = true;
                     arr1[i]=0;
-                    arr2[i]=0;
+                    arr2[j]=0;
                     break;
                 }
                 else {
