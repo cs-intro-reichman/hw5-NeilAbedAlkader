@@ -49,7 +49,7 @@ public class Scrabble {
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
 		for(int i = 0 ; i < NUM_OF_WORDS ; i ++){
-			if(MyString.subsetOf(word.toLowerCase(),DICTIONARY[i].toLowerCase())&&MyString.subsetOf(DICTIONARY[i].toLowerCase(),word.toLowerCase())){
+			if(MyString.subsetOf(word.toLowerCase(),DICTIONARY[i])&&MyString.subsetOf(DICTIONARY[i].toLowerCase(),word)){
 				return true;
 			}
 		}
@@ -62,7 +62,8 @@ public class Scrabble {
 	public static int wordScore(String word) {
 		int score = 0;
 		for(int i=0; i<word.length(); i++)
-			score += SCRABBLE_LETTER_VALUES[word.charAt(i)-97];
+			score += SCRABBLE_LETTER_VALUES[word.charAt(i) - 97];
+
 
 		score = score * word.length();
 
@@ -80,8 +81,8 @@ public class Scrabble {
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
 		String result = MyString.randomStringOfLetters(HAND_SIZE-2);
-		MyString.insertRandomly('a',result);
-		MyString.insertRandomly('e',result);
+		result = MyString.insertRandomly('a',result);
+		result = MyString.insertRandomly('e',result);
 		return result;
 	}
 	

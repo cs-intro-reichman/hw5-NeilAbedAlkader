@@ -41,28 +41,29 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-        boolean flag = false;
-        char[] arr1 = StrToArr(str1);
-        char[] arr2 = StrToArr(str2);
-
-        if(str1.isEmpty())
+        if (str1.isEmpty()) {
             return true;
+        }
+        char[] arr1 = str1.toCharArray();
+        char[] arr2 = str2.toCharArray();
 
-        for(int i =0; i < arr1.length; i++){
-            for(int j =0; j < arr2.length; j++){
-                if(arr1[i]==arr2[j] && arr1[i]!=0 && arr2[j]!=0) {
-                    flag = true;
-                    arr1[i]=0;
-                    arr2[j]=0;
+        for (int i = 0; i < arr1.length; i++) {
+            boolean found = false;
+            for (int j = 0; j < arr2.length; j++) {
+                if (arr1[i] == arr2[j]) {
+                    found = true;
+                    arr2[j] = 0;
                     break;
                 }
-                else {
-                    flag = false;
-                }
+            }
+            if (!found) {
+                return false;
             }
         }
-        return flag;
+
+        return true;
     }
+
 
     /** Returns a string which is the same as the given string, with a space
      * character inserted after each character in the given string, except
